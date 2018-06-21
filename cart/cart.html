@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>购物车</title>
+    <link rel="stylesheet" href="css/shopcart.css">
+</head>
+<body>
+    <div class="wrap">
+        <table class="box" border="1">
+            <tr class="title">
+                <td>商品</td>
+                <td>单价/元</td>
+                <td>数量</td>
+                <td>小计</td>
+            </tr>
+            <tr class="item">
+                <td class="img" style="background-image: url(images/1.jpg)"></td>
+                <td class="price">20</td>
+                <td>
+                    <div class="btn">
+                        <span class="less">-</span>
+                        <input type="text" value="0">
+                        <span class="more">+</span>
+                    </div>
+                </td>
+                <td>
+                    <span class="total">0</span>
+                </td>
+            </tr>
+            <tr class="item">
+                <td class="img" style="background-image: url(images/2.jpg)"></td>
+                <td class="price">30.5</td>
+                <td>
+                    <div class="btn">
+                        <span class="less">-</span>
+                        <input type="text" value="0">
+                        <span class="more">+</span>
+                    </div>
+                </td>
+                <td>
+                    <span class="total">0</span>
+                </td>
+            </tr>
+            <tr class="item">
+                <td class="img" style="background-image: url(images/3.jpg)"></td>
+                <td class="price">50.5</td>
+                <td>
+                    <div class="btn">
+                        <span class="less">-</span>
+                        <input type="text" value="0">
+                        <span class="more">+</span>
+                    </div>
+                </td>
+                <td>
+                    <span class="total">0</span>
+                </td>
+            </tr>
+            <tr class="item">
+                <td class="img" style="background-image: url(images/4.jpg)"></td>
+                <td class="price">90</td>
+                <td>
+                    <div class="btn">
+                        <span class="less">-</span>
+                        <input type="text" value="0">
+                        <span class="more">+</span>
+                    </div>
+                </td>
+                <td>
+                    <span class="total">0</span>
+                </td>
+            </tr>
+        </table>
+        <div id="sum">
+            <p>合计费用 <span class="tot-price">0</span>元</p>
+            <p>已选中 <span class="tot-num">0</span>个商品</p>
+        </div>
+    </div>
+</body>
+<script src="js/cart.js"></script>
+
+</html>
