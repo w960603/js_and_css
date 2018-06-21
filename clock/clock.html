@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>时钟</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        .wrap{
+            position: relative;
+            width:420px;
+            height: 420px;
+            margin: 50px auto;
+            border: 2px solid #bbb;
+            border-radius:50%;
+            font-size: 40px;
+            font-weight: bold;
+            vertical-align: center;
+        }
+        #scale{
+            width: 100%;
+            height: 100%;
+        }
+        #scale:after{
+            display: block;
+            position: absolute;
+            top:50%;left:50%;
+            width: 8px;
+            height: 8px;
+            z-index:2;
+            margin: -4px 0 0 -4px;
+            border-radius:50%;
+            background-color: #000;
+            content:"";
+        }
+        #scale li{
+            position: absolute;
+        }
+        #scale li:nth-child(1){
+            top:30px;right: 100px;
+        }
+        #scale li:nth-child(2){
+            top:95px;right: 35px;
+        }
+        #scale li:nth-child(3){
+            top:183px;right: 10px;
+        }
+        #scale li:nth-child(4){
+            top:270px;right: 40px;
+        }
+        #scale li:nth-child(5){
+            top:340px;right: 105px;
+        }
+        #scale li:nth-child(6){
+            bottom:0;left:198px;
+            margin: auto;
+        }
+        #scale li:nth-child(7){
+            bottom:25px;left: 110px;
+        }
+        #scale li:nth-child(8){
+            bottom:90px;left: 40px;
+        }
+        #scale li:nth-child(9){
+            bottom:187px;left: 10px;
+        }
+        #scale li:nth-child(10){
+            bottom:270px;left: 30px;
+        }
+        #scale li:nth-child(11){
+            bottom:340px;left: 90px;
+        }
+        #scale li:nth-child(12){
+            top:0;left:188px;
+            margin: auto;
+        }
+        #hour{
+            position: absolute;
+            bottom:200px;left:50%;
+            margin-left: -3px;
+            width: 6px;
+            height: 100px;
+            background-color: #000;
+            border-radius:5px;
+            transform-origin: 3px 90px;
+        }
+        #minu{
+            position: absolute;
+            bottom:200px;left:50%;
+            margin-left: -2px;
+            width: 4px;
+            height: 150px;
+            background-color: #000;
+            border-radius:5px;
+            transform-origin: 2px 140px;
+        }
+        #sec{
+            position: absolute;
+            bottom:200px;left:50%;
+            margin-left: -1px;
+            width: 2px;
+            height: 200px;
+            background-color: #000;
+            border-radius:5px;
+            transform-origin: 1px 190px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <ul id="scale">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li>
+            <li>11</li>
+            <li>12</li>
+        </ul>
+        <div id="hour"></div>
+        <div id="minu"></div>
+        <div id="sec"></div>
+        <!--<div class="item"></div>-->
+    </div>
+</body>
+<script>
+    var oScale = document.getElementById("scale"),
+        aScaleLi = oScale.getElementsByTagName("li"),
+        oHour = document.getElementById("hour"),
+        oMinu = document.getElementById("minu"),
+        oSec = document.getElementById("sec");
+    function rotate() {//指针转动
+        var dateH = new Date().getHours(),
+            dateM = new Date().getMinutes(),
+            dateS = new Date().getSeconds();
+        oHour.style.transform = `rotate(${dateH * 30 + dateM * (30 / 60) + dateS * (30 / 60 / 60)}deg)`;
+        oMinu.style.transform = `rotate(${dateM * (360 / 60) + dateS * (360 / 60 / 60)}deg)`;
+        oSec.style.transform = `rotate(${dateS * (360 / 60)}deg)`;
+        setTimeout(rotate,1000);
+    }
+    function numColor(){//数字加颜色
+        for (var i = 0,length=aScaleLi.length; i < length; i++) {
+            var r = Math.ceil(Math.random()*256),
+                g = Math.ceil(Math.random()*256),
+                b = Math.ceil(Math.random()*256),
+                a = (Math.random()*.5+.5).toFixed(1);
+            aScaleLi[i].style.color = "rgba( "+ r + "," + g + "," + b +","+ a + ")";
+        }
+        setTimeout(numColor,1000);
+    }
+    function Color(item){//指针加颜色
+            var r = Math.ceil(Math.random()*256),
+                g = Math.ceil(Math.random()*256),
+                b = Math.ceil(Math.random()*256),
+                a = Math.ceil(Math.random());
+            item.style.backgroundColor = "rgba( "+ r + "," + g + "," + b +","+a+ ")";
+            console.log(oHour.style.color);
+            setTimeout(function(){return Color(item)},1000);
+    }
+    // setTimeout(rotate,0);
+    // setTimeout(numColor,0);
+    // setTimeout(function(){return Color(oHour)},10);
+    // setTimeout(function(){return Color(oMinu)},10);
+    // setTimeout(function(){return Color(oSec)},10);
+    rotate();
+    numColor();
+    Color(oMinu);
+    Color(oHour);
+    Color(oSec);
+
+
+</script>
+</html>
