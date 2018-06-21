@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无缝轮播</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            vertical-align: top;
+        }
+        #wrap{
+            position: relative;
+            overflow: hidden;
+            width: 600px;
+            height: 336px;
+            margin: 50px auto;
+        }
+        #banner{
+            position: absolute;
+            left: 0;top:0;
+            width: 5600px;
+            height: 100%;
+        }
+        #banner li{
+            float: left;
+            width: 600px;
+        }
+        #banner li img{
+            width: 100%;
+        }
+        #page{
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            height: 16px;
+            line-height: 16px;
+            text-align: center;
+        }
+        #page li{
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 0 2px;
+            background-color: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        #page li.on{
+            background-color: #06f;
+        }
+        #btn div{
+            position: absolute;
+            top: 0;bottom: 0;
+            z-index: 1;
+            width: 30px;
+            height: 60px;
+            margin: auto;
+            background-color: rgba(0,0,0,.3);
+            color: #eee;
+            line-height: 60px;
+            text-align: center;
+            cursor: pointer;
+        }
+        #btn #pre{
+            left: 0;
+        }
+        #btn #next{
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <ul id="banner">
+            <li class="ban-list"><img src="images/1.jpg" alt=""></li>
+            <li class="ban-list"><img src="images/2.jpg" alt=""></li>
+            <li class="ban-list"><img src="images/3.jpg" alt=""></li>
+            <li class="ban-list"><img src="images/4.jpg" alt=""></li>
+            <li class="ban-list"><img src="images/5.jpg" alt=""></li>
+            <li class="ban-list"><img src="images/6.jpg" alt=""></li>
+            <li class="ban-list"><img src="images/7.jpg" alt=""></li>
+            <li class="ban-list"><img src="images/1.jpg" alt=""></li>
+        </ul>
+        <ul id="page"></ul>
+        <div id="btn">
+            <div id="pre"> &lt; </div>
+            <div id="next"> &gt; </div>
+        </div>
+    </div>
+</body>
+<script src="js/animation.js"></script>
+<script>
+    var oPre = document.getElementById("pre"),
+        oNext = document.getElementById("next"),
+        oBanner = document.getElementById("banner"),
+        aBanLi = oBanner.getElementsByClassName("ban-list"),
+        oPage = document.getElementById("page"),
+        aPageLi = oPage.getElementsByTagName("li"),
+        width = aBanLi[0].offsetWidth,
+        _status = true,
+        index = 0;
+
+
+    for (var i = 0; i < aBanLi.length - 1; i++) {
+        var aPagLi = document.createElement("li");//生成小按钮
+        oPage.appendChild(aPagLi);
+
+        aPagLi.index = i;
+        aPagLi.onclick = function () {//添加点击事件
+            aPageLi[index].classList.remove("on");
+            index = this.index;
+            this.classList.add("on");
+            move();
+        }
+    }
+    aPageLi[0].classList.add("on");//第一个按钮默认选中
+
+    //自动切换;
+    setTimeout(function fn() {
+        if (_status) {
+            aPageLi[index].classList.remove("on");
+            index++;
+            aPageLi[index % (aBanLi.length - 1)].classList.add("on");
+            move();
+        }
+        setTimeout(fn,2000)
+    },2000);
+
+    //切换下一张
+   oNext.onclick = function(){
+       if (_status) {
+           aPageLi[index].classList.remove("on");
+           index++;
+           aPageLi[index % (aBanLi.length - 1)].classList.add("on");
+           move();
+       }
+
+    };
+
+   //切换上一张
+    oPre.onclick = function(){
+        if (_status) {
+            aPageLi[index].classList.remove("on");
+            index--;
+            if (index <0) {
+                index = aBanLi.length - 2 ;
+                oBanner.style.left = (- (aBanLi.length -1) * width) + "px";
+            }
+            aPageLi[index].classList.add("on");
+            move();
+        }
+    };
+
+    //定义运动函数
+    function move(){
+        _status = false;
+        animation(oBanner,{
+                left : (-index * width)
+            },{
+                duration : 500
+            },function(){
+                if (index === (aBanLi.length-1)) {
+                    oBanner.style.left = "0";
+                    index = 0;
+                }
+                _status = true;
+            })
+    }
+</script>
+</html>

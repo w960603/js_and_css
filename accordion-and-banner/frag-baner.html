@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>碎片化轮播</title>
+    <style>
+        .banner{
+            overflow:hidden;
+            position: relative;
+            width: 960px;
+            height: 540px;
+            margin: 50px auto;
+            /*border: 1px solid #333;*/
+        }
+        .banner .pic {
+            width: 100%;
+            height: 100%;
+            font-size: 0;
+        }
+        .banner .pic i{
+            position: relative;
+            display: inline-block;
+            background-size: 1000px 600px;
+        }
+        .banner .btn{
+            position: absolute;
+            top:50%;
+            width: 100%;
+            height: 0;
+            margin-top: -40px;
+        }
+        .banner .btn span{
+            display: block;
+            width: 40px;
+            height: 80px;
+            font-family: "宋体";
+            background-color: rgba(0,0,0,.3);
+            line-height: 80px;
+            text-align: center;
+        }
+        .banner .btn .pre{
+            float: left;
+        }
+        .banner .btn .next{
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="pic"></div>
+        <div class="btn">
+            <span class="pre">&lt;</span>
+            <span class="next">&gt;</span>
+        </div>
+    </div>
+</body>
+<script src="js/animation.js"></script>
+<script>
+
+    var aBanner = document.getElementsByClassName("banner")[0],
+        aPic = document.getElementsByClassName("pic")[0],
+        aPicI = document.getElementsByTagName("i"),
+        aBtn = document.getElementsByClassName("btn")[0],
+        aPre = aBtn.getElementsByClassName("pre")[0],
+        aNext = aBtn.getElementsByClassName("next")[0],
+        arr = ["images/1.jpg","images/2.jpg","images/3.jpg","images/4.jpg",],
+
+        //声明属性
+        grid = {
+            row : 10,
+            column : 10
+        },
+        iAttr = {
+            width : aBanner.offsetWidth / grid.row,
+            height : aBanner.offsetHeight / grid.column
+        },
+        index = 0;
+
+    //生成碎片i
+    for (var i=0 ;i< grid.row;i++){
+        for (var j = 0; j < grid.column; j++) {
+            var theI = document.createElement("i");
+            theI.style.width = iAttr.width+ "px";
+            theI.style.height = iAttr.height + "px";
+            theI.style.backgroundImage = `url('${arr[index]}')`;
+            theI.style.backgroundPosition = `${-j * iAttr.width}px ${-i * iAttr.height}px`;
+            aPic.appendChild(theI);
+        }
+    }
+//切换上一张
+    aPre.onclick = function () {
+        index--;
+        if (index < 0) {
+            index = arr.length-1;
+        }
+        move();
+    };
+
+    //切换下一张
+    aNext.onclick = function () {
+        index++;
+        index%=arr.length;
+        move();
+    };
+//定义动画函数
+    function move() {
+        for (var i = 0, iL = aPicI.length; i < iL; i++) {
+            animation(aPicI[i], {
+                left: parseInt(Math.random()* 2 * aBanner.offsetWidth) - aBanner.offsetWidth,
+                top: parseInt(Math.random()* 2 * aBanner.offsetHeight) - aBanner.offsetHeight,
+                opacity : 0
+            }, {
+                duration: 1000,
+                delay : parseInt(Math.random()*500)
+            },function () {
+                this.style.backgroundImage = `url(${arr[index]})`;
+                animation(this,{
+                    left: 0,
+                    top: 0,
+                    opacity : 1
+                }, {
+                    duration: 1000,
+                    delay : parseInt(Math.random()*500)
+                })
+            })
+        }
+    }
+
+
+
+
+</script>
+</html>
