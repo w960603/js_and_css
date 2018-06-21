@@ -1,0 +1,56 @@
+@charset"UTF-8";
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,form,input,p,th,td,button{margin:0;padding:0;}
+table{border-collapse:collapse;border-spacing:0}
+i{font-style:normal;}
+ol,ul{list-style:none}
+a{text-decoration:none;}
+caption,th{text-align:left}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}
+img{vertical-align: top;}
+
+.fl{
+    float:left;
+}
+.fr{
+    float:right;
+}
+.clearfix:after{
+    display:block;
+    clear:both;
+    content:'';
+}
+.w-mg-1220{
+    overflow: hidden;
+	width:1220px;
+    margin:25px auto 0;
+    border:1px solid rgba(0, 0, 0, .1);
+    border-radius:8px;
+}
+.shadow-link{
+    display:block;
+    position: absolute;
+    top:0;left:0;
+    width:100%;
+    height:100%;
+    transition: .2s;
+}
+.m-product-list>li:hover .shadow-link{
+    box-shadow: 0 0 20px #ddd inset;
+}
+.l-line:before{
+    position: absolute;
+    top:0;left:0;
+    z-index:5;
+    width:1px;
+    height:100%;
+    background-color:rgba(0, 0, 0, .1);
+    content: "";
+}
+.b-line:after{
+    position: absolute;
+    bottom:0;left:0;
+    width:100%;
+    height:1px;
+    background-color:rgba(0, 0, 0, .1);
+    content: "";
+}
