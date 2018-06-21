@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>炫酷旋转标签</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        .wrap{
+            position: relative;
+            overflow: hidden;
+            width: 900px;
+            height: 600px;
+            margin: 10px auto;
+            border: 1px solid #999;
+        }
+        .wrap .bg{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity:0;
+            filter:blur(5px);
+            transition:.2s;
+        }
+        .wrap li{
+            position: absolute;
+            top:0;right: 0;left: 0;bottom: 0;
+            width: 130px;
+            height: 400px;
+            margin: auto;
+            color: #333;
+            text-align: center;
+            border-radius:5px;
+            box-shadow: 1px 1px 1px  #000 , -1px -1px 1px  #999;
+            transform-origin: 25px 375px;
+            transition: .6s ease;
+        }
+        .wrap li.cover{
+            background-color: #333;
+        }
+        .wrap li.cover img{
+            width:100%;
+            height: 100%;
+        }
+        .wrap li.cover p{
+            position: absolute;
+            top:200px;
+            left:0;
+            right:0;
+            margin: auto;
+            color: #fff;
+            font-size: 20px;
+        }
+        .wrap li div{
+            padding: 5px;
+        }
+        .wrap li:nth-child(1){
+            background-color: #F2EAC6;
+        }
+        .wrap li:nth-child(2){
+            background-color: #AB84A3;
+        }
+        .wrap li:nth-child(3){
+            background-color: #987284;
+        }
+        .wrap li:nth-child(4){
+            background-color: #5E3271;
+        }
+        .wrap li:nth-child(5){
+            background-color: #D2FCFB;
+        }
+        .wrap li:nth-child(6){
+            background-color: #DCBBD0;
+        }
+        .wrap li:nth-child(7){
+            background-color: #A2B1CD;
+        }
+        .wrap li:nth-child(8){
+            background-color: #F5A069;
+        }
+        .wrap li:nth-child(9){
+            background-color: #9383B4;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <img class="bg" src="images/bg%20(1).jpg" alt="">
+        <img class="bg" src="images/bg%20(2).jpg" alt="">
+        <img class="bg" src="images/bg%20(3).jpg" alt="">
+        <img class="bg" src="images/bg%20(4).jpg" alt="">
+        <img class="bg" src="images/bg%20(5).jpg" alt="">
+        <img class="bg" src="images/bg%20(6).jpg" alt="">
+        <img class="bg" src="images/bg%20(7).jpg" alt="">
+        <img class="bg" src="images/bg%20(8).jpg" alt="">
+        <img class="bg" src="images/bg%20(9).jpg" alt="">
+        <ul>
+            <li>
+                <div><img src="images/1.jpg" alt=""></div>
+                <p>真白</p>
+            </li>
+            <li>
+                <div><img src="images/2.jpg" alt=""></div>
+                <p>优纪</p>
+            </li>
+            <li>
+                <div><img src="images/3.jpg" alt=""></div>
+                <p>saber</p>
+            </li>
+            <li>
+                <div><img src="images/4.jpg" alt=""></div>
+                <p>智障</p>
+            </li>
+            <li>
+                <div><img src="images/5.jpg" alt=""></div>
+                <p>炮姐</p>
+            </li>
+            <li>
+                <div><img src="images/6.jpg" alt=""></div>
+                <p>芽衣子</p>
+            </li>
+            <li>
+                <div><img src="images/7.jpg" alt=""></div>
+                <p>少司命</p>
+            </li>
+            <li>
+                <div><img src="images/8.jpg" alt=""></div>
+                <p>焰灵姬</p>
+            </li>
+            <li>
+                <div><img src="images/9.jpg" alt=""></div>
+                <p>十香</p>
+            </li>
+            <li class="cover">
+                <div><img src="images/10.jpg" alt=""></div>
+                <p>妹子</p>
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    var aBg = document.getElementsByClassName("bg"),
+        aCover = document.getElementsByClassName("cover")[0],
+        aLi = document.getElementsByTagName("li"),
+        length=aLi.length,
+        index =0,
+        bool=true;
+
+    aCover.onclick = function () {
+        this.style.opacity = "1";
+        for (i = 0; i < aBg.length; i++) {
+            aBg[i].style.opacity="0";
+        }
+        if (bool){
+            var deg=-70;
+            for(var i=0;i<length;i++){
+                aLi[i].style.transform=`rotate(${deg}deg)`;
+                aLi[i].style.opacity="1";
+                deg = deg + 15;
+                bool=false;
+            }
+        } else{
+            for (i = 0; i < length; i++) {
+                aLi[i].style.transform=`rotate(0deg)`;
+                aLi[i].style.opacity="1";
+                bool=true;
+            }
+        }
+    };
+    for (var i=0;i<length-1;i++){
+        aLi[i].index=i;
+        aLi[i].onclick=function(){
+            aBg[index].style.opacity="0";
+            this.style.transform=`rotate(0deg)`;
+            index = this.index;
+            aBg[index].style.opacity="1";
+            this.style.opacity="1";
+            for (var j = 0; j < index; j++) {
+                aLi[j].style.transform = `rotate(-${(this.index-j)*15}deg)`;
+                aLi[j].style.opacity = ".5";
+            }
+            for (var k = index+1; k < length; k++) {
+                aLi[k].style.transform = `rotate(${(k-this.index)*15+15}deg)`;
+                aLi[k].style.opacity = ".5";
+            }
+        }
+    }
+</script>
+</html>
