@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>自定义弹窗</title>
+	<style>
+		#btn{
+			width: 100px;
+			margin: 20px 50px;
+			padding: 5px 10px;
+			background-color: #f60;
+			color: #fff;
+			font-size: 20px;
+			text-align: center;
+			cursor: pointer;
+			border-radius:5px
+		}
+		.wrap{
+			position: fixed;
+			opacity:0;
+			width:100%;
+			height:100%;
+			background-color: #000  ;
+		}
+		.pop{
+			position: absolute;
+			z-index:10;
+			overflow: hidden;
+			width: 600px;
+			padding: 10px;
+			border: 1px solid #999;
+			background-color: #eee;
+			
+			border-radius:5px
+		}
+		h2{
+			margin: 10px auto;
+			font-size: 24px;
+			text-align: center;
+		}
+		p{
+			font-size: 14px;
+			text-indent: 2em;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div id="btn">面向对象</div>
+	<!--<div class="pop">-->
+		<!--<h2>面向对象</h2>-->
+		<!--<p>面向对象编程是用抽象方式创建基于现实世界模型的一种编程模式。它使用先前建立的范例，包括模块化，多态和封装几种技术。今天，许多流行的编程语言（如Java，JavaScript，C＃，C+ +，Python，PHP，Ruby和Objective-C）都支持面向对象编程（OOP）。</p>-->
+		<!--<p>面向对象程序设计的目的是在编程中促进更好的灵活性和可维护性，在大型软件工程中广为流行。凭借其对模块化的重视，面向对象的代码开发更简单，更容易理解，相比非模块化编程方法 1, 它能更直接地分析, 编码和理解复杂的情况和过程。</p>-->
+	<!--</div>-->
+</body>
+<script src="js/animation.js"></script>
+<script src="js/pop.js"></script>
+</html>
