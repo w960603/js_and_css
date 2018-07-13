@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		.wrap{
+			width: 500px;
+			margin: 50px auto;
+			border: 1px solid #bbb;
+		}
+		.form-box {
+			width: 420px;
+			margin: 0 auto;
+			padding: 10px;
+		}
+		.form-box .left{
+			display: inline-block;
+			width: 80px;
+			height: 30px;
+			line-height: 30px;
+		}
+		.form-box .input {
+			width: 210px;
+			height: 26px;
+			font-size: 16px;
+			text-indent: 1em;
+			vertical-align: center;
+		}
+		.form-box .check{
+			visibility: hidden;
+			padding-left: 10px;
+			font-size: 14px;
+		}
+		.form-box .check.red{
+			visibility: visible;
+			color: #f00;
+		}
+		.form-box .check.green{
+			visibility: visible;
+			color: #0f4;
+			
+		 }
+		.form-box:after{
+			content:'';
+			display: block;
+			width: 300px;
+			height: 2px;
+			margin-top: 10px;
+			background-color: #0fb;
+		}
+		.register {
+			width: 300px;
+			margin-left: 10px;
+			padding: 10px;
+			text-align: center;
+		}
+		.register input {
+			width: 50px;
+			margin: 0 5px;
+			padding: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<form action="">
+			<div class="user-name form-box">
+				<div class="user left">用户名:</div>
+				<input class="input" type="text" placeholder="请输入6-12位用户名">
+				<span class="check"></span>
+			</div>
+			<div class="telephone form-box">
+				<div class="tel left">手机号码:</div>
+				<input class="input" type="text" placeholder="请输入手机号码">
+				<span class="check"></span>
+			</div>
+			<div class="password form-box">
+				<div class="pwd left">密码:</div>
+				<input class="input" type="password" placeholder="请输入6-12位密码">
+				<span class="check"></span>
+			</div>
+			<div class="password form-box">
+				<div class="pwd left">重复密码:</div>
+				<input class="input" type="password" placeholder="请重复输入密码">
+				<span class="check"></span>
+			</div>
+			<div class="password form-box">
+				<div class="pwd left">邮箱:</div>
+				<input class="input" type="text" placeholder="请输入邮箱">
+				<span class="check"></span>
+			</div>
+			<div class="register ">
+				<input class="reg" type="button" value="注册">
+				<input class="reset" type="reset" value="重置">
+			</div>
+		</form>
+	</div>
+</body>
+<script>
+	var aInput = document.getElementsByClassName('input'),
+		aCheck = document.getElementsByClassName('check'),
+		oReg = document.getElementsByClassName("reg")[0],
+		oReset = document.getElementsByClassName('reset')[0];
+	
+	function check(ele,reg,content) {
+		if(reg.test(this.value)&&ele.innerText!=='') {
+			ele.classList.remove('red');
+			ele.classList.add('green');
+			ele.innerText = '√';
+		}else{
+			if (!this.value) {
+				ele.classList.remove('red');
+				ele.innerText = '';
+				return
+			}
+			ele.classList.remove('green');
+			ele.classList.add('red');
+			ele.innerText = content;
+		}
+	}
+	function  reCheck(ele1,ele2,content){
+		if (this.value === ele1.value) {
+			ele2.classList.remove('red');
+			ele2.classList.add('green');
+			ele2.innerText = '√';
+		}else{
+			if (!this.value) {
+				ele2.classList.remove('red');
+				ele2.innerText = '';
+				return
+			}
+			ele2.classList.remove('green');
+			ele2.classList.add('red');
+			ele2.innerText = content;
+		}
+	}
+	function clean(ele) {
+		for (var i = 0; i < ele.length; i++) {
+			ele[i].innerText='';
+		}
+	}
+	function register(ele) {
+		var checked=true;
+		for (var i = 0; i < ele.length; i++) {
+			if (!(ele[i].innerText === '√')) {
+				checked=false
+			}
+		console.log(checked);
+		}
+		if (checked) {
+			alert('注册成功');
+			clean(ele);
+			for (var i = 0; i < aInput.length; i++) {
+				aInput[i].value="";
+			}
+		}else{
+			alert('请正确填写!!')
+		}
+	}
+	var reg1=/^\w{6,12}$/,
+		reg2=/^1[3-9]\d{9}$/,
+		reg3=/^\w{6,12}$/,
+		reg4=/^\w+@\w+.com$/;
+	aInput[0].addEventListener('keyup',check.bind(aInput[0],aCheck[0],reg1,'用户名输入错误'));
+	aInput[1].addEventListener('keyup',check.bind(aInput[1],aCheck[1],reg2,'手机号输入错误'));
+	aInput[2].addEventListener('keyup',check.bind(aInput[2],aCheck[2],reg3,'密码输入错误'));
+	aInput[3].addEventListener('keyup',reCheck.bind(aInput[3],aInput[2],aCheck[3],'密码输入不一致'));
+	aInput[4].addEventListener('keyup',check.bind(aInput[4],aCheck[4],reg4,'请正确输入邮箱'));
+	
+	oReg.addEventListener('click',register.bind(oReg,aCheck));
+	oReset.addEventListener('click',clean.bind(oReset,aCheck));
+	
+	
+	
+	
+	
+	
+</script>
+</html>
