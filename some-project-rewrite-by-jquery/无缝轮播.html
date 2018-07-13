@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无缝轮播</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            vertical-align: top;
+        }
+        #wrap{
+            position: relative;
+            overflow: hidden;
+            width: 600px;
+            height: 336px;
+            margin: 50px auto;
+        }
+        #banner{
+            position: absolute;
+            left: 0;top:0;
+            width: 800%;
+            height: 100%;
+        }
+        #banner li{
+            float: left;
+            width: 12.5%;
+        }
+        #banner li img{
+            width: 100%;
+        }
+        #page{
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            height: 16px;
+            line-height: 16px;
+            text-align: center;
+        }
+        #page li{
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 0 2px;
+            background-color: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        #page li.on{
+            background-color: #06f;
+        }
+        #btn div{
+            position: absolute;
+            top: 0;bottom: 0;
+            z-index: 1;
+            width: 30px;
+            height: 60px;
+            margin: auto;
+            background-color: rgba(0,0,0,.3);
+            color: #eee;
+            line-height: 60px;
+            text-align: center;
+            cursor: pointer;
+        }
+        #btn #pre{
+            left: 0;
+        }
+        #btn #next{
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <ul id="banner">
+            <li class="ban-list"><img src="images/1.jpg" alt=""></li>
+            <li class="ban-list"><img src="images/2.jpg" alt=""></li>
+            <li class="ban-list"><img src="images/3.jpg" alt=""></li>
+            <li class="ban-list"><img src="images/4.jpg" alt=""></li>
+            <li class="ban-list"><img src="images/5.jpg" alt=""></li>
+            <li class="ban-list"><img src="images/6.jpg" alt=""></li>
+            <li class="ban-list"><img src="images/7.jpg" alt=""></li>
+            <li class="ban-list"><img src="images/1.jpg" alt=""></li>
+        </ul>
+        <ul id="page"></ul>
+        <div id="btn">
+            <div id="pre"> &lt; </div>
+            <div id="next"> &gt; </div>
+        </div>
+    </div>
+</body>
+<script src="js/jquery.min.js"></script>
+<script>
+    $(function(){
+    	var timer;
+        var len = $('#banner li').length-1;
+        var i=0;
+        var status = true;
+        
+    	//获取每次切换移动的距离
+        var imgWidth = $('#wrap').hover(function(){
+	        clearTimeout(timer)
+        },function(){
+	       timer = setTimeout(autoPlay,1000);       //鼠标移入暂停播放,移除自动播放
+        }).width();
+        
+        
+        //生成按钮并添加点击事件
+        for (var j = 0; j < len; j++) {
+            $('#page').append('<li></li>');
+        }
+        $('#page li').click(function(){
+	        i = $(this).index();
+	        $('#banner').stop().animate({
+		        left: -imgWidth*i,
+	        },800);
+	        $(this).addClass('on').siblings().removeClass('on');
+        }).eq(0).addClass('on');
+        
+        //开启自动轮播
+        autoPlay();
+        
+        //注册左右切换按钮点击事件
+        $("#next").click(function () {
+            next()
+        });
+        $('#pre').click(function () {
+            pre()
+        });
+        
+        //自动轮播方法
+         function autoPlay(){
+            next();
+            timer = setTimeout(autoPlay,3000)
+         }
+         
+         //定义移动的方法
+         function move() {
+	         $('#banner').stop().animate({
+		         left: -imgWidth*i,
+	         },800);
+	         
+         }
+         
+        //切换下一张方法
+        function next(){
+            i++;
+            if (i > len ) {
+                i=1;
+                $('#banner').css('left',0);
+            }
+            move();
+            if (i > len-1){
+                $('#page li').eq(0).addClass('on').siblings().removeClass('on');
+            } else{
+                $('#page li').eq(i).addClass('on').siblings().removeClass('on');
+            }
+            
+        }
+        
+        //切换上一张方法
+        function pre() {
+	        i--;
+            if (i < 0) {
+                i = len - 1;
+                $('#banner').css('left', -imgWidth * len);
+            }
+            move();
+            if (i === len) {
+                $('#page li').eq(len).addClass('on').siblings().removeClass('on');
+            } else {
+                $('#page li').eq(i).addClass('on').siblings().removeClass('on');
+            }
+        }
+    })
+        
+</script>
+</html>
