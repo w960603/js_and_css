@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>天气预报</title>
+	<link rel="stylesheet" href="css/weather.css">
+</head>
+<body>
+	<div id="weather-forecast">
+		<div class="top clearfix">
+			<div class="area">
+				<h2>当前城市:</h2>
+				<span class="province"></span>省(市)/
+				<span class="city"></span>市/
+				<span class="district"></span>区(县)
+			</div>
+			<div class="search">
+				<label>天气</label>
+				<input class="content" type="text" name="" placeholder='请输入城市名'>
+				<input class='submit' type="button" name="" value="搜索">
+			</div>
+		</div>
+		
+		<div class="detailed-weather now-weather">
+			<p class="now">现在气温 :</p>
+			<p class="temp ">
+				<span class="now-temp"></span>°
+			</p>
+			<p class="weather">
+				<span class="today-weather"></span>
+			</p>
+		</div>
+		<div class="date">
+			<p>
+				今天是
+				<span class='year'></span>年
+				<span class='month'></span>月
+				<span class='day'></span>日
+			</p>
+		</div>
+		<div class="main-weathers">
+			<div class="title">
+				<span class="forecast">7天预报</span>
+				<span class="update-time"></span>
+				更新
+			</div>
+			<ul class="weather-list">
+				<!-- <li class="on">
+					<h3 class="week">周六</h3>
+					<p class="day-weather">雷阵雨</p>
+					<div class="img">
+						<img src="http://app1.showapi.com/weather/icon/day/01.png">
+					</div>
+					
+					<p class="temp">
+						<span class="high-temp">34</span>°~
+						<span class="low-temp">25</span>°
+					</p>
+					<div class="img">
+						<img src="http://app1.showapi.com/weather/icon/night/01.png">
+					</div>
+					<p class="night-weather">阴</p>
+					<p class="date"><span>07</span>/<span>07</span></p>
+				</li>
+				 -->
+			</ul>
+		</div>
+	</div>
+</body>
+<script src='js/ajax.js'></script>
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="js/forecast.js"></script>
+</html>

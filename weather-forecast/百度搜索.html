@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>百度搜索</title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+		form{
+			position: relative;
+			width: 600px;
+			margin:100px auto 0;
+
+		}
+		form span{
+			display: inline-block;
+			position: relative;
+		}
+		form input[type=text]{
+			width: 510px;
+			height: 34px;
+			padding-left: 10px;
+			border:1px solid #bbb;
+			outline:none;
+		}
+		form input[type=text]:focus{
+			border-color: #38f;
+		}
+		form input[type=button]{
+			position: absolute;
+			height: 36px;
+			margin-left: -1px;
+			padding: 5px 10px;
+			border:none;
+			border-left:1px solid #bbb;
+			background-color: #38f;
+			color: #fff;
+			outline:none;
+			cursor: pointer;
+		}
+		form img{
+			display: block;
+			width: 270px;
+			height: 129px;
+			margin: 0 auto 20px;
+		}
+		ul{
+			position: absolute;
+			top:35px;
+			z-index:-1;
+			width: 100%;
+			border:1px solid #bbb;
+			border-top:0;
+			line-height: 32px;
+		}
+		ul li{
+			height: 36px;
+			padding-left: 10px;
+			color: #333;
+			font-size: 14px;
+			cursor:pointer;
+		}
+		ul li:hover{
+			background-color: #f7f7f7;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<form action="https://www.baidu.com/s" target="_blank">
+			<img src="images/bd_logo1.png" alt="">
+			<span>
+				<input type="text" name="wd" >
+				<ul class="search-list"></ul>
+			</span>
+			
+			<input type="button" name="" value='百度一下'>
+			
+		</form>
+	</div>
+	
+<script src="js/baidu.js"></script>
+</body>
+</html>
