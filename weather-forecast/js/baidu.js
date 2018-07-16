@@ -4,11 +4,12 @@ var aInput = document.getElementsByTagName("input"),
 
 	aInput[0].addEventListener('keyup',function(e){
 		requestWord();
-		
-		//按回车键提交表单
+	//按回车键提交表单
 		if (e.keyCode===13){
 			oForm.submit();
-		}
+			aInput[0].blur();
+      oSearchList.style.display = 'none';
+	}
 	});
 	
 	//获得焦点显示模糊查找数据
@@ -16,17 +17,18 @@ var aInput = document.getElementsByTagName("input"),
 		requestWord();
 		oSearchList.style.display = 'block'
 	});
-	
-	//失去焦点隐藏模糊查找数据
-	aInput[0].addEventListener('blur',function(){
-		setTimeout(function(){
+
+  //失去焦点隐藏模糊查找数据
+  aInput[0].addEventListener('blur',function(){
+    setTimeout(function(){
       oSearchList.style.display = 'none'
     },200)
-	});
+  });
 	
 	//点击提交按钮提交表单
 	aInput[1].addEventListener('click',function () {
-		oForm.submit()
+		oForm.submit();
+	oSearchList.style.display = 'none'
 	});
 	
 	//通过jsonp请求数据
@@ -54,6 +56,7 @@ var aInput = document.getElementsByTagName("input"),
 					aInput[0].value = this.innerHTML;
 					console.log(oForm.submit());
 					oForm.submit();
+					oSearchList.style.display = 'none'
 				};
 				oSearchList.append(li);
 			}
