@@ -19,7 +19,9 @@ var aInput = document.getElementsByTagName("input"),
 	
 	//失去焦点隐藏模糊查找数据
 	aInput[0].addEventListener('blur',function(){
-		oSearchList.style.display = 'none'
+		setTimeout(function(){
+      oSearchList.style.display = 'none'
+    },200)
 	});
 	
 	//点击提交按钮提交表单
@@ -48,8 +50,9 @@ var aInput = document.getElementsByTagName("input"),
 			 if(data.s[i]&&aInput[0].value){
 				var li = document.createElement('li');
 				li.innerHTML = data.s[i];
-				li.onclick = function(){//点击模糊查找的数据,将搜索框的内容替换为该数据
+         li.onclick = function(){//点击模糊查找的数据,将搜索框的内容替换为该数据
 					aInput[0].value = this.innerHTML;
+					console.log(oForm.submit());
 					oForm.submit();
 				};
 				oSearchList.append(li);
