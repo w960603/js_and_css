@@ -1,6 +1,6 @@
 <template>
   <div id="container">
-    <my-pop></my-pop>
+    <!--<my-pop></my-pop>-->
     <my-nav :nav="nav" @goto="goto"></my-nav>
     <my-home id="home" @clicked="goto"></my-home>
     <my-about id="about" @clicked="goto"></my-about>

@@ -32,11 +32,11 @@
             url:'https://www.wangzejie.com/pages/accordion-and-banner/banner.html',
             detail:'无缝轮播'
           },
-          {
-            src: require('../assets/images/project/3.jpg'),
-            url:'https://www.wangzejie.com/pages/ball/ball.html',
-            detail:'运动的小球'
-          },
+          // {
+          //   src: require('../assets/images/project/3.jpg'),
+          //   url:'https://www.wangzejie.com/pages/ball/ball.html',
+          //   detail:'运动的小球'
+          // },
           {
             src: require('../assets/images/project/4.jpg'),
             url:'https://www.wangzejie.com/pages/chuizi-mall/index.html',
@@ -138,10 +138,13 @@
     overflow: hidden;
     position: relative;
     width: 100%;
-    margin: 1em 0;
-    border: 1px solid #bbb;
+    border: 4px solid #999;
     background-color: #eee;
     break-inside: avoid;
+    transform: scale(1);
+  }
+  ul li:not(:nth-child(1)){
+    margin: 1em 0;
   }
   ul li img{
     width: 100%;
@@ -153,7 +156,7 @@
     top:0;left:0;
     width: 100%;
     height: 100%;
-    opacity:0;
+    opacity: 0;
     background-color: rgba(0,0,0,.5);
     color: #fff;
     text-align: center;

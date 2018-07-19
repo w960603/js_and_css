@@ -1,0 +1,75 @@
+@charset"UTF-8";
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,form,input,p,th,td,button{margin:0;padding:0}
+table{border-collapse:collapse;border-spacing: 0}
+ol,ul{list-style:none}
+a{text-decoration:none;}
+caption,th{text-align:left}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}
+
+
+.clearfix:after{
+    display: block;
+    clear:both;
+    content:'';
+}
+.wrap{
+    width:1000px;
+    margin: 50px auto;
+}
+
+.box {
+    width: 1000px;
+
+    border-collapse: collapse;
+    text-align: center;
+ }
+.box .title td{
+    height: 50px;
+    background-color: #bbb;
+}
+.box tr td{
+    width: 25%;
+    height: 100px;
+}
+.box  .img{
+    background: center/50% no-repeat;
+}
+.box .btn{
+    width: 120px;
+    border:1px solid #999;
+    margin: 0 auto;
+    font-size: 0;
+}
+.box .btn span{
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-color: #eee;
+    color: #000;
+    font-size: 18px;
+    line-height: 35px;
+    text-align: center;
+    vertical-align: center;
+    cursor:pointer;
+}
+.box .btn input{
+    width:50px;
+    height: 30px;
+    border:none;
+    outline:none;
+    font-size: 18px;
+    text-align: center;
+    vertical-align: center;
+}
+#sum{
+    width: 1000px;
+    height: 50px;
+    margin-top: 20px;
+    background-color: #aaa;
+}
+#sum p{
+    float: right;
+    margin-right: 50px;
+    color: #fff;
+    line-height: 50px;
+}

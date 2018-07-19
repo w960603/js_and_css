@@ -18,8 +18,8 @@
         })
       }
     },
-    mounted(){
-		  $(window).on('load',this.showPop())
+    mounted() {
+      this.showPop()
     }
 	}
 </script>
