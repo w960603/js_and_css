@@ -138,7 +138,7 @@
     overflow: hidden;
     position: relative;
     width: 100%;
-    border: 4px solid #999;
+    border: 4px solid #065FBB;
     background-color: #eee;
     break-inside: avoid;
     transform: scale(1);
