@@ -52,10 +52,9 @@
         }
     function move(ele){//小球运动
 
-        console.log(ele);
 
-        var         Height = window.innerHeight,
-                    Width = window.innerWidth,
+        var         Height = document.documentElement.clientHeight,
+                    Width = document.documentElement.clientWidth,
                     top = ele.offsetTop +ele.vY,
                     left = ele.offsetLeft +ele.vX;
 
@@ -70,12 +69,11 @@
             }else if (ele.offsetLeft < 0) {
                 ele.vX *= (ele.vX>0)?1:-1;
             }
-
-            ele.style.top = top + "px";
-            ele.style.left =left + "px";
-
-
-            requestAnimationFrame(move.bind(this,ele));
+            
+	        ele.style.top = Math.min(top,Height-attr.height) + "px";
+            ele.style.left = Math.min(left,Width-attr.width) + "px";
+	
+	    requestAnimationFrame(move.bind(null,ele));
     }
 
     function color(ele){//随机颜色

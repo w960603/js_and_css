@@ -88,7 +88,8 @@
             var arr = [];
             for (var key in res) {
                 var str = key.match(/^f(\d+)/);
-                if (str) {
+	            console.log(str);
+	            if (str) {
                     arr[str[1]-1] = res[key];
                 }
             }
