@@ -6,7 +6,7 @@
 
 <script>
   import basicCss from './css/basic.css';
-
+  import todolist from './component/todoList'
 export default {
   name: 'app',
   data () {
