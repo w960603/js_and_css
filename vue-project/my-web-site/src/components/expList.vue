@@ -1,19 +1,33 @@
 <template>
-  <ul class="experience ">
-    <li v-for="item in expList" class="clearfix">
-      <div class="icon">
-        <i class="iconfont" :class="icon"></i>
-      </div>
-      <div class="left">
-        <h3 class="exp-desc">{{item.job}}</h3>
-        <p class="time">{{item.time}}</p>
-      </div>
-      <div class="right">
-        <h3 class="company">{{item.company}}</h3>
-        <p class="detail">{{item.detail}}</p>
-      </div>
-    </li>
-  </ul>
+    <div class="clearfix">
+        <ul class="experience hidden-xs ">
+            <li v-for="item in expList" class="clearfix">
+                <div class="icon">
+                    <i class="iconfont" :class="icon"></i>
+                </div>
+                <div class="left">
+                    <h3 class="exp-desc">{{item.job}}</h3>
+                    <p class="time">{{item.time}}</p>
+                </div>
+                <div class="right1">
+                    <h3 class="company">{{item.company}}</h3>
+                    <p class="detail">{{item.detail}}</p>
+                </div>
+            </li>
+        </ul>
+        <ul class="visible-xs col-xs-12">
+            <li v-for="item in expList" class="clearfix">
+                <div class="right">
+                    <h3 class="exp-desc h3 text-bold">{{item.company}}
+                        <p class="time ">{{item.time}}</p>
+                    </h3>
+                    
+                    <p class="detail">{{item.detail}}</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+  
   
 </template>
 
@@ -69,7 +83,9 @@
       box-sizing:border-box;
       line-height: 1.8em;
     }
-    
+    .text-bold{
+        font-weight: bold;
+    }
     .experience h3{
        font-size: 20px;
         line-height: 30px;
@@ -79,16 +95,18 @@
       color: #999;
       font-size: 18px;
     }
-    .right{
-      float: left;
-      width: 65%;
-      padding-left: 60px;
-      box-sizing: border-box;
+    
+    .right1{
+    
+        float: left;
+        width: 65%;
+        padding-left: 60px;
+        box-sizing: border-box;
     }
     .right h3{
       position: relative;
-      margin-bottom: 22px;
-      padding-bottom: 22px;
+      margin-bottom: 11px;
+      padding-bottom: 11px;
     }
     .right h3:after{
       content: '';

@@ -1,5 +1,5 @@
 <template>
-  <div id="container">
+  <div id="container " class="container-fluid" style="padding:0;">
     <!--<my-pop></my-pop>-->
     <my-nav :nav="nav" @goto="goto"></my-nav>
     <my-home id="home" @clicked="goto"></my-home>
@@ -99,14 +99,14 @@ export default {
 
 <style>
     #container{
-      min-width:1200px;
+    
     }
     section{
       min-height: 400px;
       background-color: rgba(0,0,0,.5);
     }
     .pd120{
-      padding: 120px;
+      padding: 80px 0;
     }
     .pd120 .wrap{
       max-width:1000px;
