@@ -1,5 +1,5 @@
 <template>
-	  <div class="pd120 col-md-12" id="experience">
+	  <div class="pd120 col-md-12 section" id="experience">
         <div class="wrap">
             <h2 class="general h2">我的经历</h2>
           <div class="col-md-12 ">

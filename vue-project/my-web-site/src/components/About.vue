@@ -1,5 +1,5 @@
 <template>
-  <div id="about" class=" col-md-12 clearfix">
+  <div id="about" class=" col-md-12 clearfix section">
     <div class="wrap ">
       <div class="about-top container-fluid">
         <div class="row">

@@ -1,5 +1,5 @@
 <template>
-	  <div id="home" class=" ">
+	  <div id="home" class=" section">
       <!--<div class="wrap-shadow"></div>-->
         <div class="welcome center-block hidden-xs">
           <p class="welcome-text">欢迎来到我的主页</p>
