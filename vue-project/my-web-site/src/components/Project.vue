@@ -22,6 +22,21 @@
 		data() {
 			return {
 			  img:[
+                  {
+                      src: require('../assets/images/project/18.png'),
+                      url:'https://www.wangzejie.com/pages/canvas/canvas-city.html',
+                      detail:'canvas移动城市'
+                  },
+                  {
+                      src: require('../assets/images/project/19.png'),
+                      url:'https://www.wangzejie.com/pages/canvas/canvas-fireworks.html',
+                      detail:'canvas-烟花'
+                  },
+                  {
+                      src: require('../assets/images/project/20.png'),
+                      url:'https://www.wangzejie.com/pages/canvas/canvas-ray.html',
+                      detail:'canvas-射线'
+                  },
           {
             src: require('../assets/images/project/1.png'),
             url:'https://www.wangzejie.com/pages/accordion/accor-css+js.html',
