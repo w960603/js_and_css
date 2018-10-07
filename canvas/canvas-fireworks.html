@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>烟花</title>
+		<style>
+			*{
+				margin: 0;
+			}
+			html,body{
+				height: 100%;
+			}
+			body{
+				overflow: hidden;
+			}
+			canvas{
+				background: #ddd;
+			}
+		</style>
+</head>
+<body>
+	<canvas></canvas>
+
+</body>
+<script>
+	(function(){
+		let oC = document.querySelector('canvas');
+		let ctx = oC.getContext('2d');
+		let w = oC.width = window.innerWidth;
+		let h = oC.height = window.innerHeight;
+		let cX = w/2;
+		let cY = h/2;
+		
+		let Particle = function(x,y,vx,vy){
+			this.x = x;
+			this.y = y;
+			this.vx = vx;
+			this.vy = vy;
+			this.ox = x;
+			this.oy = y;
+			this.alpha = Math.random();
+			this.color = 25;
+			this.lineWidth = Math.random()*4;
+		};
+		
+		Particle.prototype = {
+			update:function(){
+				this.vx+=Math.random()*.5-.25;
+				this.vy+=0.8;
+				this.vy*=.97;
+				this.alpha*=.98;
+				
+				this.ox = this.x;
+				this.oy = this.y;
+				
+				this.x+=this.vx;
+				this.y+=this.vy;
+				
+				if(this.y<0||this.y>h||this.alpha<.1){
+					this.vx=Math.random()*2-1;
+					this.vy=Math.random()*-50;
+					this.ox = this.x = cX;
+					this.oy = this.y = h;
+					this.alpha = Math.random();
+				}
+			},
+			render:function(){
+				ctx.save();
+				ctx.globalAlpha = .8;
+				ctx.lineWidth = this.lineWidth;
+				ctx.strokeStyle = 'hsla('+this.color+',100%,50%,'+this.alpha+')';
+				ctx.beginPath();
+				ctx.moveTo(this.ox,this.oy);
+				ctx.lineTo(this.x,this.y);
+				ctx.stroke();
+				ctx.restore()
+			}
+		};
+		
+		let particleCount = 500;
+		let particle = null;
+		let particles=[];
+		
+		for (let i = 0;i<250;i++){
+			particle = new Particle(cX,h,Math.random()*2-1,50);
+			particles.push(particle)
+		}
+		
+		(function loop(){
+			requestAnimationFrame(loop);
+			ctx.globalCompositeOperation = 'source-over';
+			ctx.fillStyle = 'rgba(0,0,0,.5)';
+			ctx.fillRect(0,0,w,h);
+			ctx.globalCompositeOperation = 'lighter';
+			
+			if (particles.length < particleCount) {
+				particle = new Particle(cX,h,Math.random()*2-1,Math.random()*50);
+				particles.push(particle)
+			}
+			
+			for(let i = 0 ,len = particles.length;i<len;i++){
+				particle = particles[i];
+				particle.update();
+				particle.render(ctx)
+			}
+		})()
+	})()
+</script>
+</html>
