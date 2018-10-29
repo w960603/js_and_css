@@ -2,7 +2,7 @@
     <div id="project" class="pd120 col-md-12 clearfix section">
         <div class="wrap center-block">
             <h2 class="general h3">来看看我的作品吧</h2>
-            <p class="download col-md-12">所有小项目
+            <p class="download col-md-12">部分小项目
                 <a href="https://github.com/w960603/js_and_css.git" target="_blank">→ GitHub下载地址 ←</a>
             </p>
             <div class=" col-xs-12">
@@ -22,25 +22,16 @@
         data() {
             return {
                 img: [
-                    {
-                        src: require('../assets/images/project/18.png'),
-                        url: 'https://www.wangzejie.com/pages/canvas/canvas-city.html',
-                        detail: 'canvas移动城市'
-                    },
-                    {
-                        src: require('../assets/images/project/19.png'),
-                        url: 'https://www.wangzejie.com/pages/canvas/canvas-fireworks.html',
-                        detail: 'canvas-烟花'
-                    },
+                    
                     {
                         src: require('../assets/images/project/20.png'),
                         url: 'https://www.wangzejie.com/pages/canvas/canvas-ray.html',
                         detail: 'canvas-射线'
                     },
                     {
-                        src: require('../assets/images/project/1.png'),
-                        url: 'https://www.wangzejie.com/pages/accordion/accor-css+js.html',
-                        detail: '手风琴效果'
+                        src: require('../assets/images/project/13.jpg'),
+                        url: 'https://www.wangzejie.com/pages/vue-project/my-first-vue-project/index.html',
+                        detail: '用vue写的一个网站页面'
                     },
                     {
                         src: require('../assets/images/project/2.png'),
@@ -52,10 +43,31 @@
                         url: 'https://www.wangzejie.com/pages/chuizi-mall/index.html',
                         detail: '纯css做得锤子官网'
                     },
+    
+                    {
+                        src: require('../assets/images/project/8.jpg'),
+                        url: 'https://www.wangzejie.com/pages/meizu-mobile/index.html',
+                        detail: '纯css做的魅族官网移动端'
+                    },
                     {
                         src: require('../assets/images/project/5.jpg'),
                         url: 'https://www.wangzejie.com/pages/css-hover-animation/mouseenter.html',
                         detail: '纯css做的鼠标移入效果'
+                    },
+                    {
+                        src: require('../assets/images/project/1.png'),
+                        url: 'https://www.wangzejie.com/pages/accordion/accor-css+js.html',
+                        detail: '手风琴效果'
+                    },
+                    {
+                        src: require('../assets/images/project/18.png'),
+                        url: 'https://www.wangzejie.com/pages/canvas/canvas-city.html',
+                        detail: 'canvas移动城市'
+                    },
+                    {
+                        src: require('../assets/images/project/19.png'),
+                        url: 'https://www.wangzejie.com/pages/canvas/canvas-fireworks.html',
+                        detail: 'canvas-烟花'
                     },
                     {
                         src: require('../assets/images/project/6.jpg'),
@@ -66,11 +78,6 @@
                         src: require('../assets/images/project/7.jpg'),
                         url: 'https://www.wangzejie.com/pages/accordion-and-banner/frag-baner.html',
                         detail: '碎片化轮播'
-                    },
-                    {
-                        src: require('../assets/images/project/8.jpg'),
-                        url: 'https://www.wangzejie.com/pages/meizu-mobile/index.html',
-                        detail: '纯css做的魅族官网移动端'
                     },
                     {
                         src: require('../assets/images/project/9.jpg'),
@@ -91,11 +98,6 @@
                         src: require('../assets/images/project/12.jpg'),
                         url: 'https://www.wangzejie.com/pages/vue-project//todoList/index.html',
                         detail: '用vue写的todolist'
-                    },
-                    {
-                        src: require('../assets/images/project/13.jpg'),
-                        url: 'https://www.wangzejie.com/pages/vue-project/my-first-vue-project/index.html',
-                        detail: '用vue写的一个网站页面'
                     },
                     {
                         src: require('../assets/images/project/14.jpg'),

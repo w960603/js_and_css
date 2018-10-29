@@ -3,10 +3,10 @@
         <div class="wrap">
             <h2 class="general h2">我的经历</h2>
           <div class="col-md-12 ">
+              <h2 class="sub-title">工作经历</h2>
+              <exp-list :expList="jobExp" :icon="jobIcon"></exp-list>
             <h2 class="sub-title">教育经历</h2>
             <exp-list :expList="eduExp" :icon="eduIcon"></exp-list>
-            <h2 class="sub-title">工作经历</h2>
-            <exp-list :expList="jobExp" :icon="jobIcon"></exp-list>
             <h2 class="sub-title">获奖情况</h2>
             <exp-list :expList="awordExp" :icon="awordIcon"></exp-list>
           </div>
@@ -26,17 +26,17 @@
         eduIcon:'icon-zhishi',
         awordIcon:'icon-bisai',
         jobExp:[
+            {
+                job:'前端工程师',
+                time:'2018年7月-至今',
+                company:'杭州慕南电子商务有限公司',
+                detail:"这是我作为程序员的第一家公司,所以也是我第一次将理论知识真正的运用到了实际工作中,从工作中,我也了解了我与其他程序员之间的优势和劣势.让我对自身技能水平有了一个比较清晰的了解,当然在工作期间我也对以前了解地更完善了."
+            },
           {
             job:'兼职测试实习生',
             time:'2017年2月-2018年5月',
             company:'杭州讯霸科技有限公司',
             detail:"从大三开始到这家公司实习,做硬件测试.期间工作尽心尽责,也为公司做出了不少贡献,替公司较少了不少损失,也受到了公司上下的一直认可.但是期间我也认真思考过未来的打算,所以最终走上了程序员的道路,利用业余时间不断地学习前端知识."
-          },
-          {
-            job:'前端工程师',
-            time:'2018年7月-至今',
-            company:'杭州慕南电子商务有限公司',
-            detail:"这是我作为程序员的第一家公司,所以也是我第一次将理论知识真正的运用到了实际工作中,从工作中,我也了解了我与其他程序员之间的优势和劣势.让我对自身技能水平有了一个比较清晰的了解."
           },
         ],
         eduExp:[

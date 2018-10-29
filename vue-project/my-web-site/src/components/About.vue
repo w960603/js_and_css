@@ -72,7 +72,7 @@
           },
           {
             title: '工作: ',
-            detail: '自由职业,前端小码农'
+            detail: '杭州慕南电子商务,前端工程师'
           },
           {
             title: '网站: ',
@@ -90,23 +90,23 @@
           },
           {
             name: 'JavaScript : ',
-            degree: 81
+            degree: 86
           },
           {
             name: 'vue : ',
-            degree: 73
+            degree: 82
           },
           {
             name: 'JQuery : ',
-            degree: 72
+            degree: 78
           },
           {
             name: 'PhotoShop : ',
             degree: 84
           },
           {
-            name: 'Rhinoceros : ',
-            degree: 86
+            name: 'bootstrap : ',
+            degree: 74
           },
         ]
       }
